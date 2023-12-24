@@ -84,7 +84,7 @@ function Blitz() {
                     size="sm"
                 />
             </div>
-            <Button variant={"outline-light"} className="btn-roll" onClick={onClick}>Blitz!</Button>
+            <Button variant={"outline-light"} className="btn-blitz" onClick={onClick}>Blitz!</Button>
             <div>
                 <h1><b>Summary</b></h1>
                 <h2>Surviving Attackers: {survivingAttackers}</h2>
