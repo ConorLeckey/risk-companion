@@ -67,7 +67,7 @@ function Blitz() {
                     value={attackers}
                     variant={'light'}
                     onChange={(n)=>setAttackers(n)}
-                    size="sm"
+                    size="lg"
                 />
             </div>
             <div className={"spinner"}>
@@ -81,7 +81,7 @@ function Blitz() {
                     value={defenders}
                     variant={'light'}
                     onChange={(n)=>setDefenders(n)}
-                    size="sm"
+                    size="lg"
                 />
             </div>
             <Button variant={"outline-light"} className="btn-blitz" onClick={onClick}>Blitz!</Button>
