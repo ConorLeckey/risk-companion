@@ -1,0 +1,25 @@
+.dice-roller {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.diceplay {
+    padding-top: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-roll {
+    width: 40vw;
+    height: 10vh;
+    font-size: 42px !important;
+    font-weight: bold !important;
+}
+
+.btn-change-dice {
+    margin: 6vw;
+}
