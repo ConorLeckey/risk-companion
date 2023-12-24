@@ -1,0 +1,11 @@
+.btn-modify {
+    width: 10vh;
+}
+
+.number-input {
+    max-width: 20vw;
+    height: 10vh;
+    text-align: center;
+    font-size: xxx-large !important;
+    font-weight: bolder !important;
+}

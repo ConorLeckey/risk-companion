@@ -1,8 +1,8 @@
 import './Blitz.css';
 import React, {useState} from "react";
-import InputSpinner from "react-bootstrap-input-spinner";
 import Button from "react-bootstrap/Button";
 import {randomiseDice} from "../../utils/diceUtils";
+import Spinner from "../Spinner/Spinner";
 
 function Blitz() {
     const [attackers, setAttackers] = useState(0);
@@ -55,34 +55,13 @@ function Blitz() {
 
     return (
         <div className="Blitz">
-            <div className={"spinner"}>
-                <h2>Attackers</h2>
-                <InputSpinner
-                    className={"spinner"}
-                    type={'int'}
-                    precision={1}
-                    max={1000}
-                    min={0}
-                    step={1}
-                    value={attackers}
-                    variant={'light'}
-                    onChange={(n)=>setAttackers(n)}
-                    size="lg"
-                />
+            <div className="spinner">
+                <h1>Attackers</h1>
+                <Spinner onChange={(n)=>setAttackers(n)}/>
             </div>
-            <div className={"spinner"}>
-                <h2>Defenders</h2>
-                <InputSpinner
-                    type={'int'}
-                    precision={1}
-                    max={1000}
-                    min={0}
-                    step={1}
-                    value={defenders}
-                    variant={'light'}
-                    onChange={(n)=>setDefenders(n)}
-                    size="lg"
-                />
+            <div className="spinner">
+                <h1>Defenders</h1>
+                <Spinner onChange={(n)=>setDefenders(n)}/>
             </div>
             <Button variant={"outline-light"} className="btn-blitz" onClick={onClick}>Blitz!</Button>
             <div>
