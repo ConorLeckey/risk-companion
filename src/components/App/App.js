@@ -44,7 +44,11 @@ function App() {
                     <FontAwesomeIcon className="burger-icon fa-2x" icon={faMinus} />
                 </Button>
                 <Button variant={"outline-light"} className="btn-roll" onClick={rollDice}>Roll!</Button>
-                <Button variant={"light"}  className="btn-change-dice" onClick={()=>changeDiceAmount(1)}>
+                <Button variant={"light"}
+                        className="btn-change-dice"
+                        disabled={dice.length === 3}
+                        onClick={()=>changeDiceAmount(1)}
+                >
                     <FontAwesomeIcon className="burger-icon fa-2x" icon={faPlus} />
                 </Button>
             </div>
