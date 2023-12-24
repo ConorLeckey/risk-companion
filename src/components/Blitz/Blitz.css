@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-top: 20px;
 }
 
 .btn-blitz {
@@ -19,7 +20,7 @@ h1 {
 }
 
 .spinner {
-    margin: 32px;
+    margin: 8px;
 }
 
 .attacker-win {

@@ -5,9 +5,9 @@ import {randomiseDice} from "../../utils/diceUtils";
 import Spinner from "../Spinner/Spinner";
 
 function Blitz() {
-    const [attackers, setAttackers] = useState(0);
+    const [attackers, setAttackers] = useState(1);
     const [defenders, setDefenders] = useState(0);
-    const [survivingAttackers, setSurvivingAttackers] = useState(0);
+    const [survivingAttackers, setSurvivingAttackers] = useState(1);
     const [survivingDefenders, setSurvivingDefenders] = useState(0);
     const [blinking, setBlinking] = useState(false);
 
@@ -57,25 +57,33 @@ function Blitz() {
         <div className="Blitz">
             <div className="spinner">
                 <h1>Attackers</h1>
-                <Spinner onChange={(n)=>setAttackers(n)}/>
+                <Spinner defaultValue={1} onChange={(n)=>setAttackers(n)}/>
             </div>
             <div className="spinner">
                 <h1>Defenders</h1>
-                <Spinner onChange={(n)=>setDefenders(n)}/>
+                <Spinner defaultValue={0} onChange={(n)=>setDefenders(n)}/>
             </div>
-            <Button variant={"outline-light"} className="btn-blitz" onClick={onClick}>Blitz!</Button>
-            <div>
-                <h1><b>Summary</b></h1>
-                <h2>Surviving Attackers: {survivingAttackers}</h2>
-                <h2>Surviving Defenders: {survivingDefenders}</h2>
-                <div className={blinking ? "blinking" : ""}>
-                    {survivingDefenders === 0 ? (
-                        <h1 className={"attacker-win"}>ATTACKERS WIN!</h1>
-                    ):(
-                        <h1 className={"defender-win"}>DEFENDERS WIN!</h1>
-                    )}
+            <Button variant={"outline-light"}
+                    className="btn-blitz"
+                    onClick={onClick}
+                    disabled={defenders === 0 || attackers === 1}
+            >
+                Blitz!
+            </Button>
+            {survivingDefenders > 0 || survivingAttackers > 1 ? (
+                <div>
+                    <h1><b>Summary</b></h1>
+                    <h2>Surviving Attackers: {survivingAttackers}</h2>
+                    <h2>Surviving Defenders: {survivingDefenders}</h2>
+                    <div className={blinking ? "blinking" : ""}>
+                        {survivingDefenders === 0 ? (
+                            <h1 className={"attacker-win"}>ATTACKERS WIN!</h1>
+                        ):(
+                            <h1 className={"defender-win"}>DEFENDERS WIN!</h1>
+                        )}
+                    </div>
                 </div>
-            </div>
+            ) : <></>}
         </div>
     );
 }

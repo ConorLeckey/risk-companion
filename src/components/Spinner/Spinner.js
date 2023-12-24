@@ -1,15 +1,24 @@
 import './Spinner.css';
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Button, Form, InputGroup} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
 
-function Spinner({onChange}) {
+function Spinner({ defaultValue, onChange }) {
     const [value, setValue] = useState(0);
+    const inputRef = useRef(null);
 
     useEffect(()=>{
         onChange(value)
     })
+
+    useEffect(()=>{
+        setValue(defaultValue)
+    }, [defaultValue])
+
+    useEffect(()=>{
+        inputRef.current.value = value
+    }, [value])
 
     return (
         <div className="Spinner">
@@ -23,9 +32,10 @@ function Spinner({onChange}) {
                     <FontAwesomeIcon className="burger-icon fa-2x" icon={faMinus} />
                 </Button>
                 <Form.Control
+                    ref={inputRef}
                     className="number-input"
                     type="number"
-                    value={value}
+                    onChange={(event)=>setValue(parseInt(event.target.value))}
                     data-bs-theme="dark"
                 />
                 <Button variant="dark"
