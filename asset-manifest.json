@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/risk-companion/static/css/main.0a13ce33.css",
+    "main.js": "/risk-companion/static/js/main.cac331cd.js",
+    "static/js/787.3dc2d418.chunk.js": "/risk-companion/static/js/787.3dc2d418.chunk.js",
+    "index.html": "/risk-companion/index.html",
+    "main.0a13ce33.css.map": "/risk-companion/static/css/main.0a13ce33.css.map",
+    "main.cac331cd.js.map": "/risk-companion/static/js/main.cac331cd.js.map",
+    "787.3dc2d418.chunk.js.map": "/risk-companion/static/js/787.3dc2d418.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0a13ce33.css",
+    "static/js/main.cac331cd.js"
+  ]
+}
