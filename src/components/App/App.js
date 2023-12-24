@@ -2,6 +2,7 @@ import './App.css';
 import React from "react";
 import DiceRoller from "../DiceRoller/DiceRoller";
 import {Fade, Tab, Tabs} from "react-bootstrap";
+import Blitz from "../Blitz/Blitz";
 
 function App() {
     return (
@@ -14,10 +15,10 @@ function App() {
               justify
             >
               <Tab eventKey="roller" title="Dice Roller">
-                 <DiceRoller/>
+                  <DiceRoller/>
               </Tab>
               <Tab eventKey="blitz" title="Blitz">
-
+                  <Blitz/>
               </Tab>
             </Tabs>
         </div>

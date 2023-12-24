@@ -4,28 +4,18 @@ import React, {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
+import {randomiseDice} from "../../utils/diceUtils";
 
 function DiceRoller() {
     const [dice, setDice] = useState([1, 2, 1]);
 
     useEffect(() => {
     }, [dice]);
-
-    function randomiseDice(diceArray) {
-        const newDice = []
-        for (let i = 0; i < diceArray.length; i++) {
-            newDice[i] = Math.floor(Math.random() * 6) + 1
-        }
-        return newDice
-    }
-
     function rollDice() {
         setDice(randomiseDice(dice))
     }
     function changeDiceAmount(difference) {
         const newDice = Array(dice.length + difference)
-        console.log(difference)
-        console.log(newDice)
         setDice(randomiseDice(newDice))
     }
 
