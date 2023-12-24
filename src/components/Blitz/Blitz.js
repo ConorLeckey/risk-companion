@@ -17,17 +17,26 @@ function Blitz() {
         function fight(attackerScore, defenderScore) {
             if (attackerScore > defenderScore) {
                 currentDefenders--;
+                console.log("ATTACKERS ARE VICTORIOUS!\n")
             } else {
                 currentAttackers--;
+                console.log("DEFENDERS ARE VICTORIOUS!\n")
             }
         }
 
+        // Each loop represents a single battle
         while (currentAttackers > 1 && currentDefenders > 0) {
-            const attackerDice = randomiseDice(Array(Math.min(currentAttackers - 1, 3))).sort((a, b) => a - b);
-            const defenderDice = randomiseDice(Array(Math.min(currentDefenders, 2))).sort((a, b) => a - b);
+            const attackerDice = randomiseDice(Array(Math.min(currentAttackers - 1, 3))).sort((a, b) => b - a);
+            const defenderDice = randomiseDice(Array(Math.min(currentDefenders, 2))).sort((a, b) => b - a);
 
+            console.log("\n\n============ THE DICE FOR THIS BATTLE ARE: ===============\n")
+            console.log("ATTACKERS ROLLED: ", attackerDice)
+            console.log("DEFENDERS ROLLED: ", defenderDice)
+
+            console.log("\n\nFIGHT 1 IS BEGINNING!\n")
             fight(attackerDice[0], defenderDice[0])
-            if(attackerDice.length >= 2 && defenderDice === 2){
+            if(attackerDice.length >= 2 && defenderDice.length === 2){
+                console.log("\n\nFIGHT 2 IS BEGINNING!\n")
                 fight(attackerDice[1], defenderDice[1])
             }
         }

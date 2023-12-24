@@ -22,7 +22,7 @@ function DiceRoller() {
     return (
         <div className="dice-roller">
             <div className="diceplay">
-                {dice.map(die => <Dice number={die}/>)}
+                {dice.map((die, index) => <Dice key={index} number={die}/>)}
             </div>
             <div className={"control"}>
                 <Button variant={"light"}
