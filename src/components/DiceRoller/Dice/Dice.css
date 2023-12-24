@@ -2,3 +2,18 @@
     padding: 16px;
     font-size: 56px;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .rolling {
+    animation: dice-roll infinite 0.5s linear;
+  }
+}
+
+@keyframes dice-roll {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

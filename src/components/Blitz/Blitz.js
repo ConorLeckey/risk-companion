@@ -9,6 +9,7 @@ function Blitz() {
     const [defenders, setDefenders] = useState(0);
     const [survivingAttackers, setSurvivingAttackers] = useState(0);
     const [survivingDefenders, setSurvivingDefenders] = useState(0);
+    const [blinking, setBlinking] = useState(false);
 
     function blitz() {
         let currentAttackers = attackers;
@@ -44,6 +45,14 @@ function Blitz() {
         setSurvivingDefenders(currentDefenders)
     }
 
+    function onClick() {
+        blitz();
+        setBlinking(true)
+        setTimeout(() => {
+          setBlinking(false)
+        }, 1000);
+    }
+
     return (
         <div className="Blitz">
             <div className={"spinner"}>
@@ -75,11 +84,18 @@ function Blitz() {
                     size="sm"
                 />
             </div>
-            <Button variant={"outline-light"} className="btn-roll" onClick={blitz}>Blitz!</Button>
+            <Button variant={"outline-light"} className="btn-roll" onClick={onClick}>Blitz!</Button>
             <div>
-                <h2>Summary</h2>
+                <h1><b>Summary</b></h1>
                 <h2>Surviving Attackers: {survivingAttackers}</h2>
                 <h2>Surviving Defenders: {survivingDefenders}</h2>
+                <div className={blinking ? "blinking" : ""}>
+                    {survivingDefenders === 0 ? (
+                        <h1 className={"attacker-win"}>ATTACKERS WIN!</h1>
+                    ):(
+                        <h1 className={"defender-win"}>DEFENDERS WIN!</h1>
+                    )}
+                </div>
             </div>
         </div>
     );
