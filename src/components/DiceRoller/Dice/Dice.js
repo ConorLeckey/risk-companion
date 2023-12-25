@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faDiceFive, faDiceFour, faDiceOne, faDiceSix, faDiceThree, faDiceTwo} from "@fortawesome/free-solid-svg-icons";
 import {useEffect, useState} from "react";
 
-function Dice({number, dice}) {
+function Dice({number, dice, color="white"}) {
     const [rolling, setRolling] = useState(false);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ function Dice({number, dice}) {
 
     const diceArray = [faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix]
     return (
-        <div className={"dice " + (rolling ? "rolling" : "")}>
+        <div className={"dice " + (rolling ? "rolling" : "") + " " + color}>
             <FontAwesomeIcon className="burger-icon fa-2x" icon={diceArray[number-1]} />
         </div>
     );

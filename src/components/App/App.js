@@ -3,6 +3,7 @@ import React from "react";
 import DiceRoller from "../DiceRoller/DiceRoller";
 import {Fade, Tab, Tabs} from "react-bootstrap";
 import Blitz from "../Blitz/Blitz";
+import Battle from "../Battle/Battle";
 
 function App() {
     return (
@@ -16,6 +17,9 @@ function App() {
             >
               <Tab eventKey="roller" title="Dice Roller">
                   <DiceRoller/>
+              </Tab>
+              <Tab eventKey="battle" title="Battle">
+                  <Battle/>
               </Tab>
               <Tab eventKey="blitz" title="Blitz">
                   <Blitz/>
