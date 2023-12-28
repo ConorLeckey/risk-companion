@@ -1,5 +1,5 @@
 import './Blitz.css';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
 import {randomiseDice} from "../../utils/diceUtils";
 import Spinner from "../Spinner/Spinner";
@@ -10,6 +10,11 @@ function Blitz() {
     const [survivingAttackers, setSurvivingAttackers] = useState(1);
     const [survivingDefenders, setSurvivingDefenders] = useState(0);
     const [blinking, setBlinking] = useState(false);
+
+    useEffect(()=>{
+        setSurvivingAttackers(0)
+        setSurvivingDefenders(0)
+    }, [attackers, defenders])
 
     function blitz() {
         let currentAttackers = attackers;
@@ -48,9 +53,11 @@ function Blitz() {
     function onClick() {
         blitz();
         setBlinking(true)
-        setTimeout(() => {
-          setBlinking(false)
-        }, 1000);
+        for (let x = 0; x < 10; x++) {
+            setTimeout(() => {
+              setBlinking(x % 2 === 0)
+            }, x * 100);
+        }
     }
 
     return (
@@ -75,13 +82,14 @@ function Blitz() {
                     <h1><b>Summary</b></h1>
                     <h2>Surviving Attackers: {survivingAttackers}</h2>
                     <h2>Surviving Defenders: {survivingDefenders}</h2>
-                    <div className={blinking ? "blinking" : ""}>
-                        {survivingDefenders === 0 ? (
+                    {blinking === false ? (
+                        survivingDefenders === 0 ? (
                             <h1 className={"attacker-win"}>ATTACKERS WIN!</h1>
-                        ):(
+                        ) : (
                             <h1 className={"defender-win"}>DEFENDERS WIN!</h1>
-                        )}
-                    </div>
+                        )
+                    ): <></>}
+
                 </div>
             ) : <></>}
         </div>

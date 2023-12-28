@@ -30,18 +30,3 @@ h1 {
 .defender-win {
     color: dodgerblue;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .blinking {
-    animation: winner-spin infinite 1s linear;
-  }
-}
-
-@keyframes winner-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
