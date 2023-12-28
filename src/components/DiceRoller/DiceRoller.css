@@ -20,6 +20,10 @@
     font-weight: bold !important;
 }
 
+.control {
+    margin-top: 2vh;
+}
+
 .btn-change-dice {
-    margin: 6vw;
+    margin: 4vw;
 }

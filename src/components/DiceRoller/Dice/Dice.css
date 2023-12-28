@@ -1,5 +1,6 @@
 .dice {
-    padding: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
     font-size: 56px;
 }
 
@@ -20,8 +21,10 @@
 
 .red {
   color: red;
+  font-size: 40px;
 }
 
 .blue {
   color: dodgerblue;
+    font-size: 40px;
 }
