@@ -1,5 +1,5 @@
 import './DiceRoller.css';
-import Dice from "./Dice/Dice";
+import Dice from "../Dice/Dice";
 import React, {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -15,8 +15,8 @@ function DiceRoller() {
         setDice(randomiseDice(dice))
     }
     function changeDiceAmount(difference) {
-        const newDice = Array(dice.length + difference)
-        setDice(randomiseDice(newDice))
+        const newDice = Array(dice.length + difference).fill(1)
+        setDice(newDice)
     }
 
     return (

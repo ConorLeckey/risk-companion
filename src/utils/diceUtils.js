@@ -1,9 +1,9 @@
 function randomiseDice(diceArray) {
-    const newDice = []
+    const newDice = [];
     for (let i = 0; i < diceArray.length; i++) {
-        newDice[i] = Math.floor(Math.random() * 6) + 1
+        newDice[i] = Math.floor(Math.random() * 6) + 1;
     }
-    return newDice
+    return newDice;
 }
 
 export {randomiseDice};

@@ -2,7 +2,7 @@ import './Battle.css';
 import React, {useState} from "react";
 import Button from "react-bootstrap/Button";
 import {randomiseDice} from "../../utils/diceUtils";
-import Dice from "../DiceRoller/Dice/Dice";
+import Dice from "../Dice/Dice";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMinus, faPlus, faSkull} from "@fortawesome/free-solid-svg-icons";
 

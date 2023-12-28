@@ -24,13 +24,19 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll --testMatch **/src/**/*.test.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "index.jsx",
+      "serviceWorker.jsx"
     ]
   },
   "browserslist": {
