@@ -11,10 +11,12 @@ function Battle() {
     const [defenderDice, setDefenderDice] = useState([1, 1]);
     const [result, setResult] = useState(null);
     const [showSummary, setShowSummary] = useState(false)
+    const [rolled, setRolled] = useState(false);
 
     function changeAttackerDiceAmount(difference) {
         const newAttackerDice = Array(attackerDice.length + difference).fill(1)
         const newDefenderDice = Array(defenderDice.length).fill(1)
+        setRolled(false)
         setAttackerDice(newAttackerDice)
         setDefenderDice(newDefenderDice)
         setShowSummary(false)
@@ -23,6 +25,7 @@ function Battle() {
     function changeDefenderDiceAmount(difference) {
         const newAttackerDice = Array(attackerDice.length).fill(1)
         const newDefenderDice = Array(defenderDice.length + difference).fill(1)
+        setRolled(false)
         setAttackerDice(newAttackerDice)
         setDefenderDice(newDefenderDice)
         setShowSummary(false)
@@ -52,6 +55,7 @@ function Battle() {
                 console.log("\n\nFIGHT 2 IS BEGINNING!\n")
                 fight(rolledAttackerDice[1], rolledDefenderDice[1])
         }
+        setRolled(true)
         setResult(newResults)
         setShowSummary(true)
     }
@@ -61,7 +65,7 @@ function Battle() {
             <div className="battle-dice">
                 <div className="attacker-dice">
                     {attackerDice.map((die, index) =>
-                    <Dice key={index} number={die} dice={attackerDice} color={"red"}/>
+                    <Dice key={index} number={die} dice={attackerDice} color={"red"} rolled={rolled}/>
                     )}
                 </div>
                 <div className="attacker-dice">
@@ -82,7 +86,7 @@ function Battle() {
                 </div>
                 <div className="defender-dice">
                     {defenderDice.map((die, index) =>
-                        <Dice key={index} number={die} dice={defenderDice} color={"blue"}/>
+                        <Dice key={index} number={die} dice={defenderDice} color={"blue"} rolled={rolled}/>
                     )}
                 </div>
                 <div className="defender-dice">

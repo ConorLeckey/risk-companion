@@ -8,21 +8,24 @@ import {randomiseDice} from "../../utils/diceUtils";
 
 function DiceRoller() {
     const [dice, setDice] = useState([1, 2, 1]);
+    const [rolled, setRolled] = useState(false);
 
     useEffect(() => {
     }, [dice]);
     function rollDice() {
+        setRolled(true)
         setDice(randomiseDice(dice))
     }
     function changeDiceAmount(difference) {
         const newDice = Array(dice.length + difference).fill(1)
+        setRolled(false)
         setDice(newDice)
     }
 
     return (
         <div className="dice-roller">
             <div className="diceplay">
-                {dice.map((die, index) => <Dice key={index} number={die} dice={dice}/>)}
+                {dice.map((die, index) => <Dice key={index} number={die} dice={dice} rolled={rolled}/>)}
             </div>
             <div className={"control"}>
                 <Button variant={"light"}
