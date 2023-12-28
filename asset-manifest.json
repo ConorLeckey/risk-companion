@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/risk-companion/static/css/main.daadcdbf.css",
-    "main.js": "/risk-companion/static/js/main.43007775.js",
+    "main.css": "/risk-companion/static/css/main.dd513855.css",
+    "main.js": "/risk-companion/static/js/main.22ae421a.js",
     "static/js/787.3dc2d418.chunk.js": "/risk-companion/static/js/787.3dc2d418.chunk.js",
     "index.html": "/risk-companion/index.html",
-    "main.daadcdbf.css.map": "/risk-companion/static/css/main.daadcdbf.css.map",
-    "main.43007775.js.map": "/risk-companion/static/js/main.43007775.js.map",
+    "main.dd513855.css.map": "/risk-companion/static/css/main.dd513855.css.map",
+    "main.22ae421a.js.map": "/risk-companion/static/js/main.22ae421a.js.map",
     "787.3dc2d418.chunk.js.map": "/risk-companion/static/js/787.3dc2d418.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.daadcdbf.css",
-    "static/js/main.43007775.js"
+    "static/css/main.dd513855.css",
+    "static/js/main.22ae421a.js"
   ]
 }
