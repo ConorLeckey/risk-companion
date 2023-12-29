@@ -10,6 +10,7 @@ function Blitz() {
     const [survivingAttackers, setSurvivingAttackers] = useState(1);
     const [survivingDefenders, setSurvivingDefenders] = useState(0);
     const [blinking, setBlinking] = useState(false);
+    const [disabled, setDisabled] = useState(false);
 
     useEffect(()=>{
         setSurvivingAttackers(0)
@@ -41,6 +42,10 @@ function Blitz() {
               setBlinking(x % 2 === 0)
             }, x * 100);
         }
+        setDisabled(true)
+        setTimeout(() => {
+          setDisabled(false);
+        }, 8 * 100);
     }
 
     return (
@@ -56,6 +61,7 @@ function Blitz() {
             <Button variant={"outline-light"}
                     className="btn-blitz"
                     onClick={onClick}
+                    disabled={disabled}
             >
                 Blitz!
             </Button>
