@@ -106,11 +106,11 @@ function Battle() {
                 <div>
                     <h1>Deaths:</h1>
                     <div className={"attacker-losses"}>
-                        {[...Array(result.attackerDeaths).keys()].map(()=>
-                            <FontAwesomeIcon className="attacker-skull-icon fa-2x" icon={faSkull} />
+                        {[...Array(result.attackerDeaths).keys()].map((value, index)=>
+                            <FontAwesomeIcon key={index} className="attacker-skull-icon fa-2x" icon={faSkull} />
                         )}
-                        {[...Array(result.defenderDeaths).keys()].map(()=>
-                            <FontAwesomeIcon className="defender-skull-icon fa-2x" icon={faSkull} />
+                        {[...Array(result.defenderDeaths).keys()].map((value, index)=>
+                            <FontAwesomeIcon key={index} className="defender-skull-icon fa-2x" icon={faSkull} />
                         )}
                     </div>
                 </div>

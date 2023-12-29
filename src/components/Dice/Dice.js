@@ -8,10 +8,8 @@ function Dice({number, dice, color="white", rolled}) {
 
     useEffect(() => {
         function rollDice() {
-            console.log("prevState: ", rolling)
             setRolling(true)
             setTimeout(() => {
-            console.log("stopped ")
               setRolling(false)
             }, 500);
         }
