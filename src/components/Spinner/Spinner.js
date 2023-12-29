@@ -4,7 +4,7 @@ import {Button, Form, InputGroup} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
 
-function Spinner({ defaultValue, onChange }) {
+function Spinner({ defaultValue, onChange, minimum=0 }) {
     const [value, setValue] = useState(0);
     const inputRef = useRef(null);
 
@@ -25,7 +25,7 @@ function Spinner({ defaultValue, onChange }) {
             <InputGroup className="mb-3">
                 <Button variant="dark"
                     className="btn-modify"
-                    disabled={value === 0}
+                    disabled={value <= minimum}
                     onClick={()=>setValue(value-1)}
                     data-bs-theme="dark"
                 >
