@@ -53,7 +53,7 @@ function Blitz() {
     function onClick() {
         blitz();
         setBlinking(true)
-        for (let x = 0; x < 10; x++) {
+        for (let x = 0; x < 8; x++) {
             setTimeout(() => {
               setBlinking(x % 2 === 0)
             }, x * 100);

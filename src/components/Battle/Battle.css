@@ -34,18 +34,18 @@
     font-size: 40px !important;
 }
 
-.draw {
-    color: yellow;
+.attacker-buttons {
+    margin-bottom: 32px;
 }
 
 .attacker-skull-icon {
     color: red;
+    margin: 4px;
+    font-size: xxx-large;
 }
 
 .defender-skull-icon {
     color: dodgerblue;
-}
-
-.attacker-losses {
-    min-height: 2em;
+    margin: 4px;
+    font-size: xxx-large;
 }

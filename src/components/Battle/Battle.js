@@ -68,7 +68,7 @@ function Battle() {
                     <Dice key={index} number={die} dice={attackerDice} color={"red"} rolled={rolled}/>
                     )}
                 </div>
-                <div className="attacker-dice">
+                <div className="attacker-buttons">
                     <Button variant={"light"}
                             className="btn-change-dice"
                             disabled={attackerDice.length === 1}
@@ -89,7 +89,7 @@ function Battle() {
                         <Dice key={index} number={die} dice={defenderDice} color={"blue"} rolled={rolled}/>
                     )}
                 </div>
-                <div className="defender-dice">
+                <div className="defender-buttons">
                     <Button variant={"light"}
                             className="btn-change-dice"
                             disabled={defenderDice.length === 1}
@@ -114,7 +114,7 @@ function Battle() {
             </Button>
             {showSummary && result ? (
                 <div>
-                    <h1>Summary</h1>
+                    <h1>Deaths:</h1>
                     <div className={"attacker-losses"}>
                         {[...Array(result[0]).keys()].map(()=>
                             <FontAwesomeIcon className="attacker-skull-icon fa-2x" icon={faSkull} />
