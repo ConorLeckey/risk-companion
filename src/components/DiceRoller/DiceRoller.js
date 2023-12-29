@@ -15,6 +15,9 @@ function DiceRoller() {
     function rollDice() {
         setRolled(true)
         setDice(randomiseDice(dice))
+        setTimeout(() => {
+          setRolled(false)
+        }, 500);
     }
     function changeDiceAmount(difference) {
         const newDice = Array(dice.length + difference).fill(1)
@@ -35,7 +38,13 @@ function DiceRoller() {
                 >
                     <FontAwesomeIcon className="burger-icon fa-2x" icon={faMinus} />
                 </Button>
-                <Button variant={"outline-light"} className="btn-roll" onClick={rollDice}>Roll!</Button>
+                <Button variant={"outline-light"}
+                        className="btn-roll"
+                        onClick={rollDice}
+                        disabled={rolled}
+                >
+                    Roll!
+                </Button>
                 <Button variant={"light"}
                         className="btn-change-dice"
                         disabled={dice.length === 3}

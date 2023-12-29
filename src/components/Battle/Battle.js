@@ -1,7 +1,7 @@
 import './Battle.css';
 import React, {useState} from "react";
 import Button from "react-bootstrap/Button";
-import {randomiseDice} from "../../utils/diceUtils";
+import {battle, randomiseDice} from "../../utils/diceUtils";
 import Dice from "../Dice/Dice";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMinus, faPlus, faSkull} from "@fortawesome/free-solid-svg-icons";
@@ -10,54 +10,43 @@ function Battle() {
     const [attackerDice, setAttackerDice] = useState([1, 1, 1]);
     const [defenderDice, setDefenderDice] = useState([1, 1]);
     const [result, setResult] = useState(null);
-    const [showSummary, setShowSummary] = useState(false)
+    const [showSummary, setShowSummary] = useState(false);
     const [rolled, setRolled] = useState(false);
 
+    function updateRollStatus(newAttackerDice, newDefenderDice) {
+        setRolled(false);
+        setAttackerDice(newAttackerDice);
+        setDefenderDice(newDefenderDice);
+        setShowSummary(false);
+    }
+
     function changeAttackerDiceAmount(difference) {
-        const newAttackerDice = Array(attackerDice.length + difference).fill(1)
-        const newDefenderDice = Array(defenderDice.length).fill(1)
-        setRolled(false)
-        setAttackerDice(newAttackerDice)
-        setDefenderDice(newDefenderDice)
-        setShowSummary(false)
+        const newAttackerDice = Array(attackerDice.length + difference).fill(1);
+        const newDefenderDice = Array(defenderDice.length).fill(1);
+        updateRollStatus(newAttackerDice, newDefenderDice);
     }
 
     function changeDefenderDiceAmount(difference) {
-        const newAttackerDice = Array(attackerDice.length).fill(1)
-        const newDefenderDice = Array(defenderDice.length + difference).fill(1)
-        setRolled(false)
-        setAttackerDice(newAttackerDice)
-        setDefenderDice(newDefenderDice)
-        setShowSummary(false)
+        const newAttackerDice = Array(attackerDice.length).fill(1);
+        const newDefenderDice = Array(defenderDice.length + difference).fill(1);
+        updateRollStatus(newAttackerDice, newDefenderDice);
     }
 
-    function battle() {
-        const rolledAttackerDice = randomiseDice(attackerDice).sort((a, b) => b - a)
-        const rolledDefenderDice = randomiseDice(defenderDice).sort((a, b) => b - a)
+    function onBattleClick() {
+        const rolledAttackerDice = randomiseDice(attackerDice);
+        const rolledDefenderDice = randomiseDice(defenderDice);
 
-        setAttackerDice(rolledAttackerDice)
-        setDefenderDice(rolledDefenderDice)
+        setAttackerDice(rolledAttackerDice);
+        setDefenderDice(rolledDefenderDice);
 
-        let newResults = [0, 0]
+        let newResults = battle(rolledAttackerDice, rolledDefenderDice);
 
-        function fight(attackerScore, defenderScore) {
-            if (attackerScore > defenderScore) {
-                newResults[1] = newResults[1] + 1;
-                console.log("ATTACKERS ARE VICTORIOUS!\n")
-            } else {
-                newResults[0] = newResults[0] + 1;
-                console.log("DEFENDERS ARE VICTORIOUS!\n")
-            }
-        }
-
-        fight(rolledAttackerDice[0], rolledDefenderDice[0])
-        if(rolledAttackerDice.length >= 2 && rolledDefenderDice.length === 2){
-                console.log("\n\nFIGHT 2 IS BEGINNING!\n")
-                fight(rolledAttackerDice[1], rolledDefenderDice[1])
-        }
-        setRolled(true)
-        setResult(newResults)
-        setShowSummary(true)
+        setRolled(true);
+        setResult(newResults);
+        setShowSummary(true);
+        setTimeout(() => {
+          setRolled(false);
+        }, 500);
     }
 
     return (
@@ -65,7 +54,7 @@ function Battle() {
             <div className="battle-dice">
                 <div className="attacker-dice">
                     {attackerDice.map((die, index) =>
-                    <Dice key={index} number={die} dice={attackerDice} color={"red"} rolled={rolled}/>
+                        <Dice key={index} number={die} dice={attackerDice} color={"red"} rolled={rolled}/>
                     )}
                 </div>
                 <div className="attacker-buttons">
@@ -108,7 +97,8 @@ function Battle() {
             </div>
             <Button variant={"outline-light"}
                     className="btn-blitz"
-                    onClick={battle}
+                    onClick={onBattleClick}
+                    disabled={rolled}
             >
                 Battle!
             </Button>
@@ -116,10 +106,10 @@ function Battle() {
                 <div>
                     <h1>Deaths:</h1>
                     <div className={"attacker-losses"}>
-                        {[...Array(result[0]).keys()].map(()=>
+                        {[...Array(result.attackerDeaths).keys()].map(()=>
                             <FontAwesomeIcon className="attacker-skull-icon fa-2x" icon={faSkull} />
                         )}
-                        {[...Array(result[1]).keys()].map(()=>
+                        {[...Array(result.defenderDeaths).keys()].map(()=>
                             <FontAwesomeIcon className="defender-skull-icon fa-2x" icon={faSkull} />
                         )}
                     </div>

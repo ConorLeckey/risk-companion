@@ -1,7 +1,7 @@
 import './Blitz.css';
 import React, {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
-import {randomiseDice} from "../../utils/diceUtils";
+import {battle, randomiseDice} from "../../utils/diceUtils";
 import Spinner from "../Spinner/Spinner";
 
 function Blitz() {
@@ -20,31 +20,14 @@ function Blitz() {
         let currentAttackers = attackers;
         let currentDefenders = defenders;
 
-        function fight(attackerScore, defenderScore) {
-            if (attackerScore > defenderScore) {
-                currentDefenders--;
-                console.log("ATTACKERS ARE VICTORIOUS!\n")
-            } else {
-                currentAttackers--;
-                console.log("DEFENDERS ARE VICTORIOUS!\n")
-            }
-        }
-
-        // Each loop represents a single battle
         while (currentAttackers > 1 && currentDefenders > 0) {
-            const attackerDice = randomiseDice(Array(Math.min(currentAttackers - 1, 3))).sort((a, b) => b - a);
-            const defenderDice = randomiseDice(Array(Math.min(currentDefenders, 2))).sort((a, b) => b - a);
+            const attackerDice = randomiseDice(Array(Math.min(currentAttackers - 1, 3)));
+            const defenderDice = randomiseDice(Array(Math.min(currentDefenders, 2)));
 
-            console.log("\n\n============ THE DICE FOR THIS BATTLE ARE: ===============\n")
-            console.log("ATTACKERS ROLLED: ", attackerDice)
-            console.log("DEFENDERS ROLLED: ", defenderDice)
+            const {attackerDeaths, defenderDeaths} = battle(attackerDice, defenderDice);
 
-            console.log("\n\nFIGHT 1 IS BEGINNING!\n")
-            fight(attackerDice[0], defenderDice[0])
-            if(attackerDice.length >= 2 && defenderDice.length === 2){
-                console.log("\n\nFIGHT 2 IS BEGINNING!\n")
-                fight(attackerDice[1], defenderDice[1])
-            }
+            currentAttackers -= attackerDeaths;
+            currentDefenders -= defenderDeaths;
         }
         setSurvivingAttackers(currentAttackers)
         setSurvivingDefenders(currentDefenders)
